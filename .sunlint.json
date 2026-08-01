@@ -1,0 +1,47 @@
+{
+    "extends": "@sun/sunlint/recommended",
+    "include": [
+        "resources/js/**"
+    ],
+    "exclude": [
+        "vendor/**",
+        "node_modules/**",
+        "storage/**",
+        "bootstrap/cache/**",
+        "public/build/**",
+        "resources/js/wayfinder/**",
+        "resources/js/actions/**",
+        "resources/js/routes/**",
+        "**/*.generated.*",
+        "**/*.d.ts"
+    ],
+    "languages": {
+        "typescript": {
+            "include": [
+                "resources/js/**/*.ts",
+                "resources/js/**/*.tsx"
+            ],
+            "exclude": [
+                "**/*.d.ts",
+                "resources/js/wayfinder/**",
+                "resources/js/actions/**",
+                "resources/js/routes/**"
+            ]
+        }
+    },
+    "testPatterns": {
+        "include": [
+            "**/*.test.*",
+            "**/*.spec.*"
+        ],
+        "rules": {
+            "C006": "off"
+        }
+    },
+    "rules": {
+        "C019": "error",
+        "C006": "warn",
+        "S005": "error"
+    },
+    "maxFilesForAI": 50
+}
