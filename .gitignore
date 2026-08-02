@@ -28,4 +28,4 @@ yarn-error.log
 /.zed
 /sunlint-report.json
 /.sunlint-cache/
-/coverage/
+/coverage/.sunlint-eslint.config.js
