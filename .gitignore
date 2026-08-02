@@ -29,3 +29,7 @@ yarn-error.log
 /sunlint-report.json
 /.sunlint-cache/
 /coverage/.sunlint-eslint.config.js
+
+# Local learning documents
+/docs/chapters/
+/docs/references/
