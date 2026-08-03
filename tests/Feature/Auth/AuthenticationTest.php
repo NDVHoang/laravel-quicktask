@@ -41,12 +41,25 @@ test('users can logout', function () {
 });
 
 test('inactive users cannot authenticate', function () {
-    $user = User::factory()->create(['is_active' => false]);
+    $user = User::factory()->inactive()->create();
 
-    $this->post('/login', [
+    $response = $this->post('/login', [
         'email' => $user->email,
         'password' => 'password',
     ]);
 
+    $response->assertSessionHasErrors('email');
     $this->assertGuest();
+});
+
+test('active users can authenticate successfully', function () {
+    $user = User::factory()->create(['is_active' => true]);
+
+    $response = $this->post('/login', [
+        'email' => $user->email,
+        'password' => 'password',
+    ]);
+
+    $this->assertAuthenticated();
+    $response->assertRedirect(route('dashboard', absolute: false));
 });
