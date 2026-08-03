@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Hash;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static> admin()
  */
 #[Fillable(['name', 'email', 'password'])]
