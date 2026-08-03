@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Hash;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static> admin()
  */
 #[Fillable(['name', 'email', 'password'])]
@@ -61,6 +62,8 @@ class User extends Authenticatable
 
     /**
      * Interact with the user's password.
+     *
+     * @return Attribute<never, string>
      */
     protected function password(): Attribute
     {
