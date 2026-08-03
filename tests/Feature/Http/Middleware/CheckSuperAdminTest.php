@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 test('super_admin alias is mapped to CheckSuperAdmin middleware', function () {
-    /** @var \Illuminate\Foundation\Http\Kernel $kernel */
+    /** @var Illuminate\Foundation\Http\Kernel $kernel */
     $kernel = app(Kernel::class);
     $aliases = $kernel->getMiddlewareAliases();
 
