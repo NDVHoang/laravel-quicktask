@@ -37,3 +37,5 @@ yarn-error.log
 # SunLint temporary files
 .sunlint-eslint.config.js
 sunlint-report.json
+# Local learning documentation
+/docs/
