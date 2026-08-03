@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'welcome')->name('home');
 
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->middleware('super_admin');
 
 Route::controller(TaskController::class)
     ->prefix('tasks')

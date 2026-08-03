@@ -108,3 +108,37 @@ test('route precedence: GET /tasks/create maps to TaskController@create not show
 
     expect($route->getActionName())->toContain(TaskController::class.'@create');
 });
+
+test('users routes have super_admin middleware', function () {
+    $expected = [
+        'users.index',
+        'users.create',
+        'users.store',
+        'users.show',
+        'users.edit',
+        'users.update',
+        'users.destroy',
+    ];
+
+    foreach ($expected as $name) {
+        $route = Route::getRoutes()->getByName($name);
+        expect($route->gatherMiddleware())->toContain('super_admin');
+    }
+});
+
+test('tasks routes do not have super_admin middleware', function () {
+    $expected = [
+        'tasks.index',
+        'tasks.create',
+        'tasks.store',
+        'tasks.show',
+        'tasks.edit',
+        'tasks.update',
+        'tasks.destroy',
+    ];
+
+    foreach ($expected as $name) {
+        $route = Route::getRoutes()->getByName($name);
+        expect($route->gatherMiddleware())->not->toContain('super_admin');
+    }
+});
