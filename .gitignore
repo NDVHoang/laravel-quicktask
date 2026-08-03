@@ -36,4 +36,4 @@ yarn-error.log
 
 # SunLint temporary files
 .sunlint-eslint.config.js
-sunlint-report.json
+sunlint-report.json/docs/
