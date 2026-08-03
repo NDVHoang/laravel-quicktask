@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Task extends Model
 {
     /**
-     * Get the user that owns the task.
+     * Get the user who owns the task.
+     *
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {

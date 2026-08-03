@@ -43,7 +43,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the tasks for the user.
+     * Get the tasks owned by the user.
+     *
+     * @return HasMany<Task, $this>
      */
     public function tasks(): HasMany
     {
