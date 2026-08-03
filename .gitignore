@@ -33,3 +33,6 @@ yarn-error.log
 # Local learning documents
 /docs/chapters/
 /docs/references/
+
+# Local learning documentation
+/docs/
