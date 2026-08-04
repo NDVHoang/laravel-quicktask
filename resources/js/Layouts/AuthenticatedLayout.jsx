@@ -3,13 +3,22 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
-    const user = usePage().props.auth.user;
+    const { auth, locale, translations } = usePage().props;
+    const user = auth.user;
+    const tLang = translations.auth_ui.language_switcher;
+    const tAuth = translations.auth_ui;
+    const tNav = translations.profile.navigation;
+    const nextLocale = locale === 'en' ? 'vi' : 'en';
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+
+    useEffect(() => {
+        document.documentElement.lang = locale;
+    }, [locale]);
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -28,12 +37,23 @@ export default function AuthenticatedLayout({ header, children }) {
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
-                                    Dashboard
+                                    {tNav.dashboard}
                                 </NavLink>
                             </div>
                         </div>
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
+                            <Link
+                                href={route('locale.update', {
+                                    locale: nextLocale,
+                                })}
+                                method="post"
+                                as="button"
+                                className="mr-4 text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none"
+                            >
+                                {tLang[nextLocale]}
+                            </Link>
+
                             <div className="relative ms-3">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -64,14 +84,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                         <Dropdown.Link
                                             href={route('profile.edit')}
                                         >
-                                            Profile
+                                            {tNav.profile}
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            {tAuth.logout}
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
@@ -132,7 +152,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             href={route('dashboard')}
                             active={route().current('dashboard')}
                         >
-                            Dashboard
+                            {tNav.dashboard}
                         </ResponsiveNavLink>
                     </div>
 
@@ -147,15 +167,24 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
 
                         <div className="mt-3 space-y-1">
+                            <ResponsiveNavLink
+                                href={route('locale.update', {
+                                    locale: nextLocale,
+                                })}
+                                method="post"
+                                as="button"
+                            >
+                                {tLang[nextLocale]}
+                            </ResponsiveNavLink>
                             <ResponsiveNavLink href={route('profile.edit')}>
-                                Profile
+                                {tNav.profile}
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}
                                 as="button"
                             >
-                                Log Out
+                                {tAuth.logout}
                             </ResponsiveNavLink>
                         </div>
                     </div>
