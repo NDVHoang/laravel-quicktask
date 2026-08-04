@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -40,5 +41,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('/{task}', 'destroy')->name('destroy');
         });
 });
+
+Route::post('/locale/{locale}', LocaleController::class)->name('locale.update');
 
 require __DIR__.'/auth.php';
