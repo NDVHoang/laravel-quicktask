@@ -39,3 +39,7 @@ declare module '@inertiajs/core' {
         };
     }
 }
+
+declare global {
+    function route(name?: string, params?: any, absolute?: boolean): any;
+}
