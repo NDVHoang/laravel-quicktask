@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): void
+    public function index(): View
     {
-        //
+        return view('users.index', [
+            'users' => collect([]),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class UserController extends Controller
      */
     public function create(): void
     {
-        //
+        abort(404, 'Create form not implemented yet');
     }
 
     /**
@@ -34,9 +37,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user): void
+    public function show(User $user): View
     {
-        //
+        return view('users.show', [
+            'user' => $user,
+            'tasks' => collect([]),
+        ]);
     }
 
     /**
@@ -44,7 +50,7 @@ class UserController extends Controller
      */
     public function edit(User $user): void
     {
-        //
+        abort(404, 'Edit form not implemented yet');
     }
 
     /**
