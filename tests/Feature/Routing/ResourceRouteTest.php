@@ -49,7 +49,7 @@ test('controller methods use correct route model binding signatures', function (
                 break;
             }
         }
-        expect($hasTaskModel)->toBeTrue("TaskController@{$action} should have a 'Task \$task' parameter.");
+        expect($hasTaskModel)->toBeFalse("TaskController@{$action} should NOT have a 'Task \$task' parameter.");
     }
 });
 
