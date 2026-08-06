@@ -105,12 +105,13 @@ test('blade templates escape dangerous task input', function () {
     $view->assertSee('&lt;script&gt;alert(&quot;XSS Task&quot;)&lt;/script&gt;', false);
 });
 
-test('delete button does not use GET form', function () {
+test('delete button uses DELETE form', function () {
     $user = new User(['name' => 'Test', 'email' => 'test@test.com', 'password' => 'secret']);
     $user->id = 1;
     $view = $this->view('users.index', ['users' => collect([$user])]);
 
-    $view->assertSee('aria-disabled="true"', false);
+    $view->assertSee('method="POST"', false);
+    $view->assertSee('value="DELETE"', false);
     $view->assertDontSee('<form method="GET"', false);
 });
 
