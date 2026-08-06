@@ -19,14 +19,14 @@ export default function Sidebar() {
                     <Home size={20} />
                     <span className="font-medium">Dashboard</span>
                 </Link>
-                <div className="flex cursor-not-allowed items-center space-x-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800/50">
+                <a href={route('tasks.index')} className="flex items-center space-x-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
                     <ListTodo size={20} />
-                    <span className="font-medium">Tasks (Soon)</span>
-                </div>
-                <div className="flex cursor-not-allowed items-center space-x-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800/50">
+                    <span className="font-medium">Tasks</span>
+                </a>
+                <a href={route('users.index')} className="flex items-center space-x-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
                     <Users size={20} />
-                    <span className="font-medium">Users (Soon)</span>
-                </div>
+                    <span className="font-medium">Users</span>
+                </a>
             </nav>
         </aside>
     );
