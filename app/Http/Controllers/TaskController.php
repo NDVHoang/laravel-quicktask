@@ -58,7 +58,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): View
+    public function show(string $id): View
     {
         $task = DB::table('tasks')
             ->leftJoin('users', 'tasks.user_id', '=', 'users.id')
@@ -78,7 +78,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id): View
+    public function edit(string $id): View
     {
         $task = DB::table('tasks')->where('id', $id)->first();
         if (! $task) {
@@ -96,7 +96,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, $id): RedirectResponse
+    public function update(UpdateTaskRequest $request, string $id): RedirectResponse
     {
         $taskExists = DB::table('tasks')->where('id', $id)->exists();
         if (! $taskExists) {
@@ -114,7 +114,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         $taskExists = DB::table('tasks')->where('id', $id)->exists();
         if (! $taskExists) {
